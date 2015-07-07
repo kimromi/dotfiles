@@ -31,7 +31,7 @@ filetype plugin indent on
 set autoindent 
 
 "バックアップファイルのディレクトリを指定する
-set backupdir=$HOME/vimbackup
+set backupdir=~/.vim/backup
  
 "クリップボードをWindowsと連携する
 set clipboard=unnamed

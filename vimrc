@@ -1,3 +1,29 @@
+" NeoBundle 
+if has('vim_starting')
+   set nocompatible
+   " neobundle をインストールしていない場合は自動インストール
+   if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
+      echo "install neobundle..."
+      " vim からコマンド呼び出しているだけ neobundle.vim のクローン
+      :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
+   endif
+   " runtimepath の追加は必須
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#begin(expand('~/.vim/bundle'))
+let g:neobundle_default_git_protocol='https' 
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Emmet
+NeoBundle 'mattn/emmet-vim'
+let g:user_emmet_expandabbr_key='<Tab>'
+
+" vimrc に記述されたプラグインでインストールされていないものがないかチェックする
+NeoBundleCheck
+call neobundle#end()
+filetype plugin indent on
+
 "--------------------
 " 基本的な設定
 "--------------------
@@ -40,3 +66,16 @@ set grepprg=grep\ -nh
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
+
+" 括弧・クオートを自動補完
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+inoremap ` ``<LEFT>
+vnoremap { "zdi^V{<C-R>z}<ESC>
+vnoremap [ "zdi^V[<C-R>z]<ESC>
+vnoremap ( "zdi^V(<C-R>z)<ESC>
+vnoremap " "zdi^V"<C-R>z^V"<ESC>
+vnoremap ' "zdi'<C-R>z'<ESC>

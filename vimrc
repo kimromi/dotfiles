@@ -19,6 +19,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'mattn/emmet-vim'
 let g:user_emmet_expandabbr_key='<F12>'
 
+" vim filer
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc'
+
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
@@ -66,3 +71,10 @@ set grepprg=grep\ -nh
 
 " 検索結果のハイライトをEsc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
+
+" vim filer
+nnoremap <C-f> :VimFiler -split -simple -winwidth=35 -no-quit<CR>
+
+" シンタックスに色をつける
+syntax on
+

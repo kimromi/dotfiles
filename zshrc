@@ -107,3 +107,9 @@ bindkey -e
 
 # Vim Filerのエイリアス
 alias vf='vim +VimFiler'
+
+function gacp() {
+   git add .
+   git commit -m "$1"
+   git push $2 $3
+}

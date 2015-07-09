@@ -1,4 +1,8 @@
-eval "$(rbenv init -)"
+# Emacs ライクな操作を有効にする（文字入力中に Ctrl-F,B でカーソル移動など）
+# # Vi ライクな操作が好みであれば `bindkey -v` とする
+bindkey -e
+
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -101,3 +105,4 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
+eval "$(rbenv init -)"

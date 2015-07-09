@@ -81,3 +81,7 @@ syntax on
 " 文字コード指定
 set encoding=utf-8
 set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+
+" markdownのハイライトを有効にする
+set syntax=markdown
+au BufRead,BufNewFile *.md set filetype=markdown

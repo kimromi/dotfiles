@@ -78,3 +78,6 @@ nnoremap <C-f> :VimFiler -split -simple -winwidth=35 -no-quit<CR>
 " シンタックスに色をつける
 syntax on
 
+" 文字コード指定
+set encoding=utf-8
+set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8

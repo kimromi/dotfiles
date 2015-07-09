@@ -28,7 +28,8 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle "godlygeek/tabular"
 NeoBundle "joker1007/vim-markdown-quote-syntax"
 NeoBundle "rcmdnk/vim-markdown"
-let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled=1     " 折りたたみなし
+let g:vimfiler_safe_mode_by_default = 0   " ファイル操作を可能にする
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck

@@ -115,3 +115,6 @@ function gacp() {
    git commit -m "$1"
    git push $2 $3
 }
+
+eval "$(gdircolors ~/.dircolors-solarized)"
+alias ls='gls --color=auto'

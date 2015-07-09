@@ -43,7 +43,7 @@ filetype plugin indent on
 set autoindent 
 
 "バックアップファイルのディレクトリを指定する
-set backupdir=~/.vim/backup
+set backupdir=~/other/vimbackup
  
 "クリップボードをWindowsと連携する
 set clipboard=unnamed
@@ -93,6 +93,8 @@ set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 set syntax=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" アンダーラインを引く(color terminal)
-set cursorline
-highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE
+" カラー設定
+syntax enable
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256

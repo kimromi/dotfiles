@@ -108,6 +108,8 @@ bindkey -e
 # Vim Filerのエイリアス
 alias vf='vim +VimFiler'
 
+# git add,commit,pushをワンライナーで
+# gacp "comment" origin master
 function gacp() {
    git add .
    git commit -m "$1"

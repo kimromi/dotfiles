@@ -91,3 +91,7 @@ set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 " markdownのハイライトを有効にする
 set syntax=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
+
+" アンダーラインを引く(color terminal)
+set cursorline
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE

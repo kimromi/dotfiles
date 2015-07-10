@@ -123,5 +123,5 @@ alias ls='gls --color=auto'
 export GOPATH=$HOME/.go
 export PATH=$HOME/.go/bin:$PATH
 
-# rep
-alias rep='cd $(ghq list -p | peco)'
+# repos
+alias rep='cd $(ghq list -p | grep repos | peco)'

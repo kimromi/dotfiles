@@ -23,11 +23,11 @@ let g:user_emmet_expandabbr_key='<F12>'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
-
+ 
 " Markdown syntax
-NeoBundle "godlygeek/tabular"
-NeoBundle "joker1007/vim-markdown-quote-syntax"
-NeoBundle "rcmdnk/vim-markdown"
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'joker1007/vim-markdown-quote-syntax'
+NeoBundle 'rcmdnk/vim-markdown'
 let g:vim_markdown_folding_disabled=1     " 折りたたみなし
 let g:vimfiler_safe_mode_by_default = 0   " ファイル操作を可能にする
 

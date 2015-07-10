@@ -118,3 +118,10 @@ function gacp() {
 
 eval "$(gdircolors ~/.dircolors-solarized)"
 alias ls='gls --color=auto'
+
+### GO PATH
+export GOPATH=$HOME/.go
+export PATH=$HOME/.go/bin:$PATH
+
+# rep
+alias rep='cd $(ghq list -p | peco)'

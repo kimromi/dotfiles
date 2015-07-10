@@ -39,38 +39,19 @@ filetype plugin indent on
 "--------------------
 " 基本的な設定
 "--------------------
-"新しい行のインデントを現在行と同じにする
-set autoindent 
 
-"バックアップファイルのディレクトリを指定する
-set backupdir=~/other/vimbackup
- 
-"クリップボードをWindowsと連携する
-set clipboard=unnamed
-
-"vi互換をオフする
-set nocompatible
-
-"スワップファイル用のディレクトリを指定する
-set directory=~/.vim/backup
-
-"タブの代わりに空白文字を指定する
-set expandtab
-
-"変更中のファイルでも、保存しないで他のファイルを表示する
-set hidden
-
-"インクリメンタルサーチを行う
-set incsearch
-
-"行番号を表示する
-set number
-
-"閉括弧が入力された時、対応する括弧を強調する
-set showmatch
-
-"新しい行を作った時に高度な自動インデントを行う
-set smarttab
+set autoindent                   "新しい行のインデントを現在行と同じにする
+set backupdir=~/other/vimbackup  "バックアップファイルのディレクトリを指定する
+set clipboard=unnamed            "クリップボードをWindowsと連携する
+set nocompatible                 "vi互換をオフする
+set directory=~/.vim/backup      "スワップファイル用のディレクトリを指定する
+set expandtab                    "タブの代わりに空白文字を指定する
+set hidden                       "変更中のファイルでも、保存しないで他のファイルを表示する
+set incsearch                    "インクリメンタルサーチを行う
+set ignorecase                   "大文字小文字を区別しない
+set number                       "行番号を表示する
+set showmatch                    "閉括弧が入力された時、対応する括弧を強調する
+set smarttab                     "新しい行を作った時に高度な自動インデントを行う
 
 " grep検索を設定する
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
@@ -91,10 +72,15 @@ set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
 
 " markdownのハイライトを有効にする
 set syntax=markdown
-au BufRead,BufNewFile *.md set filetype=markdown
 
 " カラー設定
 syntax enable
 set background=dark
 colorscheme solarized
 let g:solarized_termcolors=256
+
+" C-nでファイル間の移動
+nmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
+imap <silent> <C-n> <ESC>:update<CR>:bn<CR>
+vmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
+cmap <silent> <C-n> <ESC>:update<CR>:bn<CR>

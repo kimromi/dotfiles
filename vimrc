@@ -31,6 +31,9 @@ NeoBundle "rcmdnk/vim-markdown"
 let g:vim_markdown_folding_disabled=1     " 折りたたみなし
 let g:vimfiler_safe_mode_by_default = 0   " ファイル操作を可能にする
 
+" surround
+NeoBundle 'tpope/vim-surround'
+
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()

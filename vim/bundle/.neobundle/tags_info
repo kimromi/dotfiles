@@ -4,5 +4,6 @@ tabular
 unite.vim
 vim-markdown
 vim-markdown-quote-syntax
+vim-surround
 vimfiler
 vimproc

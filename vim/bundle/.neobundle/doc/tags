@@ -182,6 +182,9 @@
 <Plug>(vimfiler_yank_full_path)	vimfiler.txt	/*<Plug>(vimfiler_yank_full_path)*
 Emmet	emmet.txt	/*Emmet*
 Tabular.txt	Tabular.txt	/*Tabular.txt*
+cS	surround.txt	/*cS*
+cs	surround.txt	/*cs*
+ds	surround.txt	/*ds*
 emmet	emmet.txt	/*emmet*
 emmet-#	emmet.txt	/*emmet-#*
 emmet-$	emmet.txt	/*emmet-$*
@@ -409,6 +412,8 @@ i_<Plug>(unite_toggle_auto_preview)	unite.txt	/*i_<Plug>(unite_toggle_auto_previ
 i_<Plug>(unite_toggle_mark_current_candidate)	unite.txt	/*i_<Plug>(unite_toggle_mark_current_candidate)*
 i_<Plug>(unite_toggle_mark_current_candidate_up)	unite.txt	/*i_<Plug>(unite_toggle_mark_current_candidate_up)*
 i_<Plug>(unite_toggle_transpose_window)	unite.txt	/*i_<Plug>(unite_toggle_transpose_window)*
+i_CTRL-G_S	surround.txt	/*i_CTRL-G_S*
+i_CTRL-G_s	surround.txt	/*i_CTRL-G_s*
 neobundle	neobundle.txt	/*neobundle*
 neobundle#append()	neobundle.txt	/*neobundle#append()*
 neobundle#begin()	neobundle.txt	/*neobundle#begin()*
@@ -487,6 +492,13 @@ neobundle-unite-sources	neobundle.txt	/*neobundle-unite-sources*
 neobundle-usage	neobundle.txt	/*neobundle-usage*
 neobundle-variables	neobundle.txt	/*neobundle-variables*
 neobundle.txt	neobundle.txt	/*neobundle.txt*
+surround	surround.txt	/*surround*
+surround-customizing	surround.txt	/*surround-customizing*
+surround-issues	surround.txt	/*surround-issues*
+surround-mappings	surround.txt	/*surround-mappings*
+surround-replacements	surround.txt	/*surround-replacements*
+surround-targets	surround.txt	/*surround-targets*
+surround.txt	surround.txt	/*surround.txt*
 tabular	Tabular.txt	/*tabular*
 tabular-intro	Tabular.txt	/*tabular-intro*
 tabular-scripting	Tabular.txt	/*tabular-scripting*
@@ -784,8 +796,10 @@ unite-variables	unite.txt	/*unite-variables*
 unite.txt	unite.txt	/*unite.txt*
 unite.vim	unite.txt	/*unite.vim*
 unite_default_key_mappings	unite.txt	/*unite_default_key_mappings*
+vS	surround.txt	/*vS*
 v_<C-y>,	emmet.txt	/*v_<C-y>,*
 v_<Plug>(unite_toggle_selected_candidates)	unite.txt	/*v_<Plug>(unite_toggle_selected_candidates)*
+vgS	surround.txt	/*vgS*
 vimfiler	vimfiler.txt	/*vimfiler*
 vimfiler#custom#profile()	vimfiler.txt	/*vimfiler#custom#profile()*
 vimfiler#do_action()	vimfiler.txt	/*vimfiler#do_action()*
@@ -907,3 +921,7 @@ vimproc-tips	vimproc.txt	/*vimproc-tips*
 vimproc-tips-pseudo-devices	vimproc.txt	/*vimproc-tips-pseudo-devices*
 vimproc-variables	vimproc.txt	/*vimproc-variables*
 vimproc.txt	vimproc.txt	/*vimproc.txt*
+yS	surround.txt	/*yS*
+ySS	surround.txt	/*ySS*
+ys	surround.txt	/*ys*
+yss	surround.txt	/*yss*

@@ -47,7 +47,7 @@ set autoindent                   "新しい行のインデントを現在行と�
 set backupdir=~/other/vimbackup  "バックアップファイルのディレクトリを指定する
 set clipboard=unnamed            "クリップボードをWindowsと連携する
 set nocompatible                 "vi互換をオフする
-set directory=~/.vim/backup      "スワップファイル用のディレクトリを指定する
+set directory=~/other/vimbackup  "スワップファイル用のディレクトリを指定する
 set expandtab                    "タブの代わりに空白文字を指定する
 set hidden                       "変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch                    "インクリメンタルサーチを行う

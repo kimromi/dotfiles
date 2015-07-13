@@ -38,7 +38,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'violetyk/neocomplete-php.vim'
 let g:neocomplete_php_locale = 'ja'
 
-" vim-ref
+" vim-ref(PHPマニュアル)
 NeoBundle 'thinca/vim-ref'
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
@@ -106,5 +106,6 @@ let php_noShortTags = 1
 let php_parent_error_close = 1
 let g:sql_type_default='mysql'
 
+" vim-ref用設定
 let g:ref_cache_dir=$HOME.'/.vim/vim-ref/cache'
 let g:ref_phpmanual_path=$HOME.'/.vim/vim-ref/php-chunked-xhtml'

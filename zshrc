@@ -124,4 +124,7 @@ export GOPATH=$HOME/.go
 export PATH=$HOME/.go/bin:$PATH
 
 # repos
-alias rep='cd $(ghq list -p | grep repos | peco)'
+alias re='cd $(ghq list -p | grep repos | peco)'
+
+# mkdir + cd
+function mkcd() { mkdir $1 && cd $_ }

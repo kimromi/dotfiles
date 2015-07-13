@@ -34,6 +34,13 @@ let g:vimfiler_safe_mode_by_default = 0   " ファイル操作を可能にする
 " surround
 NeoBundle 'tpope/vim-surround'
 
+" neocomplete-php
+NeoBundle 'violetyk/neocomplete-php.vim'
+let g:neocomplete_php_locale = 'ja'
+
+" vim-ref
+NeoBundle 'thinca/vim-ref'
+
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
@@ -69,9 +76,10 @@ nnoremap <C-f> :VimFiler -split -simple -winwidth=35 -no-quit<CR>
 " シンタックスに色をつける
 syntax on
 
-" 文字コード指定
+" 文字コード指定        
 set encoding=utf-8
-set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
 
 " markdownのハイライトを有効にする
 set syntax=markdown
@@ -87,3 +95,16 @@ nmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
 imap <silent> <C-n> <ESC>:update<CR>:bn<CR>
 vmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
 cmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
+
+:silent !<command>
+
+" PHP
+let php_sql_query = 1
+let php_baselib = 1
+let php_htmlInStrings = 1
+let php_noShortTags = 1
+let php_parent_error_close = 1
+let g:sql_type_default='mysql'
+
+let g:ref_cache_dir=$HOME.'/.vim/vim-ref/cache'
+let g:ref_phpmanual_path=$HOME.'/.vim/vim-ref/php-chunked-xhtml'

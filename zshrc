@@ -83,22 +83,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(\history -n 1 | \
-        eval $tac | \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle clear-screen
-}
-zle -N peco-select-history
-bindkey '^r' peco-select-history
-
 export RBENV_ROOT="/Users/PMAC243S/.rbenv"
 PATH="$RBENV_ROOT/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -118,6 +102,7 @@ function gacp() {
    git push $2 $3
 }
 
+# ls color
 eval "$(gdircolors ~/.dircolors-solarized)"
 alias ls='gls --color=auto'
 
@@ -128,6 +113,28 @@ export PATH=$HOME/.go/bin:$PATH
 # alias
 alias re='cd $(ghq list -p | grep repos | peco)'
 alias be='bundle exec'
+
+function cc () {
+    local dir=$(ls -1d */ | peco)
+    if [ -n "$dir" ] ; then
+        cd "$dir"
+    fi
+}
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(\history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
 
 # mkdir + cd
 function mkcd() { mkdir $1 && cd $_ }

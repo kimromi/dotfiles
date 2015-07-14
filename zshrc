@@ -99,7 +99,9 @@ function peco-select-history() {
 zle -N peco-select-history
 bindkey '^r' peco-select-history
 
-eval "$(rbenv init -)"
+export RBENV_ROOT="/Users/PMAC243S/.rbenv"
+PATH="$RBENV_ROOT/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Emacs ライクな操作を有効にする（文字入力中に Ctrl-F,B でカーソル移動など）
 # # Vi ライクな操作が好みであれば `bindkey -v` とする
@@ -123,8 +125,9 @@ alias ls='gls --color=auto'
 export GOPATH=$HOME/.go
 export PATH=$HOME/.go/bin:$PATH
 
-# repos
+# alias
 alias re='cd $(ghq list -p | grep repos | peco)'
+alias be='bundle exec'
 
 # mkdir + cd
 function mkcd() { mkdir $1 && cd $_ }

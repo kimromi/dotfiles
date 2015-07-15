@@ -120,6 +120,7 @@ function cc () {
         cd "$dir"
     fi
 }
+
 function peco-select-history() {
     local tac
     if which tac > /dev/null; then

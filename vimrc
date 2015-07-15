@@ -50,17 +50,21 @@ filetype plugin indent on
 " 基本的な設定
 "--------------------
 
-set autoindent                   "新しい行のインデントを現在行と同じにする
 set backupdir=~/other/vimbackup  "バックアップファイルのディレクトリを指定する
 set clipboard=unnamed            "クリップボードをWindowsと連携する
 set nocompatible                 "vi互換をオフする
 set directory=~/other/vimbackup  "スワップファイル用のディレクトリを指定する
-set expandtab                    "タブの代わりに空白文字を指定する
 set hidden                       "変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch                    "インクリメンタルサーチを行う
 set ignorecase                   "大文字小文字を区別しない
 set number                       "行番号を表示する
 set showmatch                    "閉括弧が入力された時、対応する括弧を強調する
+set autoindent                   "新しい行のインデントを現在行と同じにする
+set expandtab                    "タブの代わりに空白文字を指定する
+set tabstop=3                    "画面上でタブ文字が占める幅
+set shiftwidth=3                 "自動インデントでずれる幅
+set softtabstop=3                "連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set smartindent                  "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smarttab                     "新しい行を作った時に高度な自動インデントを行う
 
 " grep検索を設定する
@@ -78,7 +82,8 @@ syntax on
 
 " 文字コード指定        
 set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencoding=japan
+set fileencodings=iso-2022-jp,utf-8,euc-jp,sjis
 set fileformats=unix,dos,mac
 
 " markdownのハイライトを有効にする

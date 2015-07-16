@@ -41,6 +41,10 @@ let g:neocomplete_php_locale = 'ja'
 " vim-ref(PHPマニュアル)
 NeoBundle 'thinca/vim-ref'
 
+" gist-vim
+NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
+let g:gist_api_url = 'https://git.pepabo.com/api/v3'
+
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
@@ -82,9 +86,9 @@ syntax on
 
 " 文字コード指定        
 set encoding=utf-8
-set fileencoding=japan
-set fileencodings=iso-2022-jp,utf-8,euc-jp,sjis
-set fileformats=unix,dos,mac
+"set fileencoding=japan
+"set fileencodings=iso-2022-jp,utf-8,euc-jp,sjis
+"set fileformats=unix,dos,mac
 
 " markdownのハイライトを有効にする
 set syntax=markdown

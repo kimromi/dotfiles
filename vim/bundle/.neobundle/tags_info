@@ -1,4 +1,5 @@
 emmet-vim
+gist-vim
 neobundle.vim
 neocomplete-php.vim
 tabular
@@ -9,3 +10,4 @@ vim-ref
 vim-surround
 vimfiler
 vimproc
+webapi-vim

@@ -1,4 +1,5 @@
 NeoBundleLock emmet-vim 30f856893579d34531ac256e1f6752d809956025
+NeoBundleLock gist-vim 52e2d54a038baf548de01c9413a6ebc8860fa111
 NeoBundleLock neobundle.vim 2f94664b624bc29a40fae51d38b5e922a55b85db
 NeoBundleLock neocomplete-php.vim 68c3b3a6439c6c5cc0640260dde52eef197dd2f3
 NeoBundleLock tabular 60f25648814f0695eeb6c1040d97adca93c4e0bb
@@ -9,3 +10,4 @@ NeoBundleLock vim-ref 70741519b70a67623d1e5d56d50764491b7582ea
 NeoBundleLock vim-surround 772ab9587b7d1e2c3bae75395c9123803059ba8a
 NeoBundleLock vimfiler 70b24304e0bc46cfb2888997c08399732cf23d14
 NeoBundleLock vimproc 6b8b3c724e161f39c0938046a2072f9668fc802b
+NeoBundleLock webapi-vim 6d577e49aeb81b4ede280161ca1e550c9328d098

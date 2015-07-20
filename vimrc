@@ -65,9 +65,9 @@ set number                       "行番号を表示する
 set showmatch                    "閉括弧が入力された時、対応する括弧を強調する
 set autoindent                   "新しい行のインデントを現在行と同じにする
 set expandtab                    "タブの代わりに空白文字を指定する
-set tabstop=3                    "画面上でタブ文字が占める幅
-set shiftwidth=3                 "自動インデントでずれる幅
-set softtabstop=3                "連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set tabstop=2                    "画面上でタブ文字が占める幅
+set shiftwidth=2                 "自動インデントでずれる幅
+set softtabstop=2                "連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
 set smartindent                  "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smarttab                     "新しい行を作った時に高度な自動インデントを行う
 
@@ -86,8 +86,8 @@ syntax on
 
 " 文字コード指定        
 set encoding=utf-8
-"set fileencoding=japan
-"set fileencodings=iso-2022-jp,utf-8,euc-jp,sjis
+set fileencoding=japan
+set fileencodings=iso-2022-jp,utf-8,euc-jp,sjis
 "set fileformats=unix,dos,mac
 
 " markdownのハイライトを有効にする
@@ -104,8 +104,6 @@ nmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
 imap <silent> <C-n> <ESC>:update<CR>:bn<CR>
 vmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
 cmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
-
-:silent !<command>
 
 " PHP
 let php_sql_query = 1

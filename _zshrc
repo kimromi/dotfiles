@@ -1,57 +1,353 @@
-# oh-my-zsh
-export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
-plugins=(git)
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-source $ZSH/oh-my-zsh.sh
+bindkey -e
+bindkey "^[[3~" delete-char  # fn + del
+setopt histignorealldups
+setopt auto_pushd
+setopt pushd_ignore_dups
 
-# rbenv setting
-export RBENV_ROOT="/Users/PMAC243S/.rbenv"
-PATH="$RBENV_ROOT/shims:$PATH"
-if which rbenv > /dev/null; then
-   eval "$(rbenv init -)";
+# completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+[ -f ~/.zsh/plugin/incr*.zsh ] && source ~/.zsh/plugin/incr*.zsh
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt hist_ignore_dups
+setopt share_history
+
+# tmux
+if [[ ! -d ~/.tmux/plugins/tpm ]];then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-# Emacs ライクな操作を有効にする（文字入力中に Ctrl-F,B でカーソル移動など）
-bindkey -e
+if [[ ! -d ~/.zsh/zsh-syntax-highlighting ]];then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+fi
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Vim Filerのエイリアス
-alias vf='vim +VimFiler'
+if [[ ! -d ~/.zsh/kptool ]];then
+    git clone https://github.com/shirou/kptool.git ~/.zsh/kptool/
+fi
 
-# git add,commit,pushをワンライナーで
-function gacp() {
-   git add .
-   git commit -m "$1"
-   git push $2 $3
+# prompt
+setopt promptsubst
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{red}"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}"
+zstyle ':vcs_info:*' formats "%F{blue}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+setopt prompt_subst
+function tracking() {
+    local todoist="\e[33mtodos:$(todoist list | wc -l | sed -e 's/^[ \t]*//')\e[m"
+
+    local tgc=$(toggl --cache --csv current)
+    local tgc_time=$(echo $tgc | grep Duration | cut -d ',' -f 2)
+    local tgc_dsc=$(echo $tgc | grep Description | cut -d ',' -f 2 | cut -c 1-20)
+    local short_tgc_dsc=$(if [ $(echo $tgc_dsc | wc -m) -lt 20 ]; then echo $tgc_dsc; else echo "${tgc_dsc}.."; fi)
+    if [ ! -n "$tgc_time" ]; then
+        local toggl="\e[35m[ No Time Entry ]\e[m"
+    else
+        local toggl="\e[36m[ $tgc_time $short_tgc_dsc ]\e[m"
+    fi
+    local nyah="\e[32mmitaka\e[m"
+    if [ "$OS_AUTH_URL" = "http://10.51.3.52:5000/v2.0/" ]; then
+        local nyah="\e[34mmitaka\e[m"
+    else
+        local nyah="\e[34mhavana\e[m"
+    fi
+    echo " # $todoist  $toggl  nyah:$nyah"
 }
+precmd () {
+    vcs_info
+    tracking
+}
+local p_mark="%(?,%F{green},%F{red})%#%f"
+PROMPT=" %F{white}%C%f"'${vcs_info_msg_0_}'" $p_mark "
+#RPROMPT="%F{green}[%~]%f"
 
 # ls color
 eval "$(gdircolors ~/.dircolors-solarized)"
 alias ls='gls --color=auto'
 
-# GO PATH
-export GOPATH=$HOME/.go
-export PATH=$HOME/.go/bin:$PATH
-
-# alias
-alias re='cd $(ghq list -p | grep repos | peco)'
+# aliases
+## convenience
+alias chrome="open '/Applications/Google Chrome.app'"
+alias slack="open '/Applications/Slack.app'"
+alias line="open '/Applications/LINE.app'"
+alias pass="open '/Applications/Enpass.app'"
+alias ll='ls -l --color=auto'
+alias vf='vim +VimFiler'
 alias be='bundle exec'
+alias vi='/usr/local/bin/vim'
+alias vim='/usr/local/bin/vim'
+alias ssh=~/.zsh/plugin/ssh-customize
+function re () {
+    repo=$(ghq list -p | grep repos | peco)
+    if [ -n "$repo" ]; then cd $repo;fi
+}
+function note () {
+    local dir=$HOME/Dropbox/notes
 
-function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
+    # add
+    if [ "$1" = "-a" ] || [ "$1" = "--add" ]; then
+        if [ -n "$2" ]; then
+            vi $dir/$2
+        fi
+
+    # delete
+    elif [ "$1" = "-r" ] || [ "$1" = "--rm" ]; then
+        local note=$(ls $dir | peco)
+        if [ -n "$note" ]; then
+            rm $dir/$note
+            echo "$note is deleted."
+        fi
+
+    # edit
+    elif [ "$1" = "-e" ] || [ "$1" = "--edit" ]; then
+        local note=$(ls $dir | peco)
+        if [ -n "$note" ]; then
+            vi $dir/$note
+        fi
+
+    # show
     else
-        tac="tail -r"
+        local note=$(ls $dir | peco)
+        if [ -n "$note" ]; then
+            #markdown $dir/$note | lynx -stdin
+            BUFFER=$dir/$note
+            cat $dir/$note
+        fi
     fi
-    BUFFER=$(\history -n 1 | \
-        eval $tac | \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
+}
+
+## git
+alias gl='git pull'
+alias gp='git push'
+alias gb='git branch'
+alias gm='git merge'
+alias gf='git fetch'
+alias gc='git commit'
+alias gbreset="gf -p && gb --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %"
+alias hub="GITHUB_HOST=git.pepabo.com hub"
+alias git=hub
+alias ghe='GITHUB_HOST=git.pepabo.com git'
+alias gs='ghe browse'
+alias gi='ghe issue'
+alias gpr='ghe pull-request -F .github/PULL_REQUEST_TEMPLATE.md -e'
+alias gph='git push heroku master'
+function gco () {
+    git checkout "$@"
+    if [ "master" = "$1" ]; then gbreset; fi
+}
+
+# function aliases
+function gfp() { git push && git ftp push -s "$1" }
+function vu() { vagrant up "$1" }
+function vs() { vagrant ssh "$1" }
+function vr() { vagrant reload "$1" --provision }
+
+# peco
+function peco-git-recent-branches () {
+    local selected_branch=$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | \
+        perl -pne 's{^refs/heads/}{}' | \
+        peco)
+    if [ -n "$selected_branch" ]; then
+        BUFFER="gco ${selected_branch}"
+        zle accept-line
+    fi
     zle clear-screen
 }
-zle -N peco-select-history
-bindkey '^r' peco-select-history
+zle -N peco-git-recent-branches
+bindkey "^b" peco-git-recent-branches
 
-# Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco --query "$LBUFFER"`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+
+zle -N peco-history-selection
+bindkey '^r' peco-history-selection
+
+function peco-ssh () {
+    local ip=$(cat $HOME/.muumuu/hosts | peco | awk "{print \$1}")
+    if [ -n "$ip" ]; then
+        BUFFER="ssh hiromikimura@$ip"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-ssh
+bindkey '^h' peco-ssh
+
+# export
+## nyah
+#export OS_AUTH_URL=https://nyah.pepabo.com/havana/auth/v2.0/
+#export OS_PASSWORD=9rKg8c43
+export OS_USERNAME=kimromi
+export OS_TENANT_NAME=muumuu
+export OS_CERT=/Users/PMAC243S/repos/git.pepabo.com/tech/nyah-client-cert/certs/kimromi.pem
+export OS_KEY=/Users/PMAC243S/repos/git.pepabo.com/tech/nyah-client-cert/privatekey.pem
+function havana() {
+  export OS_AUTH_URL=http://10.51.3.1:5000/v2.0/
+  export OS_PASSWORD=9rKg8c43
+  export OS_REGION_NAME=RegionOne
+}
+function mitaka() {
+  export OS_AUTH_URL=http://10.51.3.52:5000/v2.0/
+  export OS_PASSWORD=WN4]]Jza87MM
+  export OS_REGION_NAME=RegionOne
+}
+mitaka
+
+function swarm() {
+  export DOCKER_HOST="tcp://docker.pepabo.com:3376"
+  export DOCKER_CERT_PATH="$HOME/.ssh/docker"
+  export DOCKER_API_VERSION=1.23
+  export DOCKER_TLS_VERIFY="1"
+}
+function dfm() {
+  unset DOCKER_HOST
+  unset DOCKER_CERT_PATH
+  unset DOCKER_API_VERSION
+  unset DOCKER_TLS_VERIFY
+}
+swarm
+
+## nodebrew
+export PATH=$PATH:/Users/kimromi/.nodebrew/current/bin
+## rbenv settings
+export RBENV_ROOT="$HOME/.rbenv"
+PATH="$RBENV_ROOT/shims:$PATH"
+if which rbenv > /dev/null; then
+   eval "$(rbenv init -)";
+fi
+## golang settings
+export GOPATH=$HOME/.go
+export PATH=$HOME/.go/bin:$PATH
+## pyenv settings
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
+#source $HOME/.pythonbrew/etc/bashrc
+## postgresql
+export PGDATA=/usr/local/var/postgres
+
+## ---------- todoist ----------
+if [ `which todoist` ]; then
+else
+    go get github.com/sachaos/todoist
+    echo "todoist command installed."
+    todoist
+fi
+# todo add
+function da () {
+    if [ -n "$2" ]; then
+        todoist add $1 -P $2
+    else
+        todoist add $1
+    fi
+    todoist --color list
+}
+# todo complete
+function dc () {
+    if [ -n "$1" ]; then
+        local target=$(todoist list | egrep "^$1 " | head -n1 | cut -d ' ' -f 6)
+        if [ -n "$target" ]; then
+            todoist close $1
+            echo "$target is completed!!"
+        else
+            echo "not found."
+        fi
+    fi
+}
+# todo delete
+function dd () {
+    if [ -n "$1" ]; then
+        local target=$(todoist list | egrep "^$1 " | head -n1 | cut -d ' ' -f 6)
+        if [ -n "$target" ]; then
+            todoist delete $1
+            echo "$target is deleted."
+        else
+            echo "not found."
+        fi
+    fi
+}
+function d () {
+    todoist --project-namespace --namespace --color list && echo
+}
+
+function peco-todoist-project () {
+    local SELECTED_PROJECT="$(todoist projects | peco | head -n1 | cut -d ' ' -f 1)"
+    if [ -n "$SELECTED_PROJECT" ]; then
+        if [ -n "$LBUFFER" ]; then
+            local new_left="${LBUFFER%\ } $SELECTED_PROJECT"
+        else
+            local new_left="$SELECTED_PROJECT"
+        fi
+        BUFFER=${new_left}${RBUFFER}
+        CURSOR=${#new_left}
+    fi
+}
+zle -N peco-todoist-project
+bindkey '^dp' peco-todoist-project
+
+function peco-todoist-list () {
+    local SELECTED_TODO="$(todoist list | peco | head -n1 | cut -d ' ' -f 1)"
+    if [ -n "$SELECTED_TODO" ]; then
+        if [ -n "$LBUFFER" ]; then
+            local new_left="${LBUFFER%\ } $SELECTED_TODO"
+        else
+            local new_left="$SELECTED_TODO"
+        fi
+        BUFFER=${new_left}${RBUFFER}
+        CURSOR=${#new_left}
+    fi
+}
+zle -N peco-todoist-list
+bindkey '^dl' peco-todoist-list
+
+# ---------- toggl ----------
+if [ `which toggl` ]; then
+else
+    go get github.com/sachaos/toggl
+    echo "toggl command installed."
+    toggl
+fi
+function peco-todoist-toggl () {
+    local SELECTED_TODO="$(todoist list | peco | head -n1 | cut -d ' ' -f 6)"
+    if [ -n "$SELECTED_TODO" ]; then
+        BUFFER="toggl start $SELECTED_TODO -P "
+        CURSOR=$#BUFFER
+        peco-toggl-project
+    fi
+}
+zle -N peco-todoist-toggl
+bindkey '^t' peco-todoist-toggl
+
+function peco-toggl-project () {
+    local SELECTED_PROJECT="$(toggl projects | peco | head -n1 | cut -d ' ' -f 1)"
+    if [ -n "$SELECTED_PROJECT" ]; then
+        if [ -n "$LBUFFER" ]; then
+            local new_left="${LBUFFER%\ } $SELECTED_PROJECT"
+        else
+            local new_left="$SELECTED_PROJECT"
+        fi
+        BUFFER=${new_left}${RBUFFER}
+        CURSOR=${#new_left}
+    fi
+}
+zle -N peco-toggl-project
+bindkey '^lp' peco-toggl-project
+
+alias l='toggl'
+alias start='toggl start'
+alias stop='toggl stop'
+alias sync='todoist sync && toggl current > /dev/null'
+
+# other
+export EDITOR='vim'
+# 日本語対応
+export PATH="/usr/local/opt/libxml2/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$PATH"

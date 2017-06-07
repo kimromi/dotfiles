@@ -128,12 +128,7 @@ alias gm='git merge'
 alias gf='git fetch'
 alias gc='git commit'
 alias gbreset="gf -p && gb --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %"
-alias hub="GITHUB_HOST=git.pepabo.com hub"
 alias git=hub
-alias ghe='GITHUB_HOST=git.pepabo.com git'
-alias gs='ghe browse'
-alias gi='ghe issue'
-alias gpr='ghe pull-request -F .github/PULL_REQUEST_TEMPLATE.md -e'
 alias gph='git push heroku master'
 function gco () {
     git checkout "$@"
@@ -179,40 +174,6 @@ function peco-ssh () {
 }
 zle -N peco-ssh
 bindkey '^h' peco-ssh
-
-# export
-## nyah
-#export OS_AUTH_URL=https://nyah.pepabo.com/havana/auth/v2.0/
-#export OS_PASSWORD=9rKg8c43
-export OS_USERNAME=kimromi
-export OS_TENANT_NAME=muumuu
-export OS_CERT=/Users/PMAC243S/repos/git.pepabo.com/tech/nyah-client-cert/certs/kimromi.pem
-export OS_KEY=/Users/PMAC243S/repos/git.pepabo.com/tech/nyah-client-cert/privatekey.pem
-function havana() {
-  export OS_AUTH_URL=http://10.51.3.1:5000/v2.0/
-  export OS_PASSWORD=9rKg8c43
-  export OS_REGION_NAME=RegionOne
-}
-function mitaka() {
-  export OS_AUTH_URL=http://10.51.3.52:5000/v2.0/
-  export OS_PASSWORD=WN4]]Jza87MM
-  export OS_REGION_NAME=RegionOne
-}
-mitaka
-
-function swarm() {
-  export DOCKER_HOST="tcp://docker.pepabo.com:3376"
-  export DOCKER_CERT_PATH="$HOME/.ssh/docker"
-  export DOCKER_API_VERSION=1.23
-  export DOCKER_TLS_VERIFY="1"
-}
-function dfm() {
-  unset DOCKER_HOST
-  unset DOCKER_CERT_PATH
-  unset DOCKER_API_VERSION
-  unset DOCKER_TLS_VERIFY
-}
-swarm
 
 ## nodebrew
 export PATH=$PATH:/Users/kimromi/.nodebrew/current/bin
@@ -349,5 +310,7 @@ alias sync='todoist sync && toggl current > /dev/null'
 export EDITOR='vim'
 # 日本語対応
 export PATH="/usr/local/opt/libxml2/bin:$PATH"
-
 export PATH="$HOME/.yarn/bin:$PATH"
+
+# pepabo
+source ~/.zsh/.zshrc-pepabo

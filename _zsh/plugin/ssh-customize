@@ -1,0 +1,143 @@
+#!/bin/bash
+#
+# ssh into a machine and automatically set the background
+# color of Mac OS X Terminal depending on the hostname.
+#
+# インストール
+# 1. どこかにこのスクリプトを保存（/some/path/ssh-host-color)
+# 2. chmod 755 /some/path/ssh-host-color
+# 3. ~/.zshrcとかでsshのエイリアスにする alias ssh=/some/path/ssh-host-color
+# 4. 最終行のデフォルトのプロファイル名とかホスト名ごとの色の設定とかする
+
+# 背景色変更
+set_term_bgcolor() {
+   local R=$1
+   local G=$2
+   local B=$3
+   /usr/bin/osascript <<EOF
+tell application "Terminal"
+   tell window 0
+      set the background color to {$(($R*65535/255)), $(($G*65535/255)), $(($B*65535/255)), 32767}
+   end tell
+end tell
+EOF
+}
+
+# プロファイル変更
+set_term_profile() {
+   local profile=$1
+   /usr/bin/osascript -e "tell application \"Terminal\" to  set current settings of first window to settings set \"$profile\""
+}
+
+# ターミナルの色を変える 
+if [[ "$1" = web ]]; then
+  set_term_bgcolor 40 0 0
+else
+  set_term_bgcolor 0 0 40
+fi
+
+if [[ "$1" = stns ]]; then
+  # パスワード自動入力
+  expect -c "
+      # see http://urx3.nu/oINs
+      set timeout 30
+      spawn ssh hiromikimura@$2
+      interact
+      "
+elif [[ "$1" = console ]]; then
+  # パスワード自動入力
+  expect -c "
+      set timeout 30
+      spawn ssh hiromikimura@smartphone-staging.muumuu-domain.com
+      expect ":"
+      send \"hyUOMaDlUwvUBuo\n\"
+      expect "hiromikimura@smartphone-staging"
+      send \"sudo -s\n\"
+      expect "root@smartphone-staging"
+      send \"su - app\n\"
+      expect "root@smartphone-staging"
+      send \"cd /var/www/muumuu/current\n\"
+      expect "current"
+      send \"RAILS_ENV=production bundle exec rails c\n\"
+      interact
+      "
+elif [[ "$1" =~ ^um ]]; then
+  # パスワード自動入力
+  expect -c "
+      # see http://urx3.nu/oINs
+      set timeout 30
+      spawn ssh $@
+      expect ":"
+      send \"hyUOMaDlUwvUBuo\n\"
+      interact
+      "
+elif [[ "$1" = web ]]; then
+  if [[ "$2" = sp1 ]]; then
+    path=app@smartphone01.muumuu-domain.com
+  elif [[ "$2" = sp2 ]]; then
+    path=app@smartphone02.muumuu-domain.com
+  elif [[ "$2" = sps ]]; then
+    path=app@smartphone-staging.muumuu-domain.com
+  elif [[ "$2" = sps ]]; then
+    path=muumuu@smartphone-staging.muumuu-domain.com
+  elif [[ "$2" = um1 ]]; then
+    path=muumuu@umsys01.muumuu-domain.com
+  elif [[ "$2" = um2 ]]; then
+    path=muumuu@umsys02.muumuu-domain.com
+  elif [[ "$2" = dm1 ]]; then
+    path=muumuu@domainapi01.muumuu-domain.com
+  elif [[ "$2" = dm2 ]]; then
+    path=muumuu@domainapi02.muumuu-domain.com
+  elif [[ "$2" = dms ]]; then
+    path=muumuu@domainapi-staging.muumuu-domain.com
+  elif [[ "$2" = pm1 ]]; then
+    path=osaipo@payment01.osaipo.jp
+  elif [[ "$2" = pms ]]; then
+    path=osaipo@payment-staging.osaipo.jp
+  elif [[ "$2" = os1 ]]; then
+    path=osaipo@www01.osaipo.jp
+  elif [[ "$2" = os2 ]]; then
+    path=osaipo@www02.osaipo.jp
+  else
+    path=$2
+  fi
+
+  if [[ $path != "" ]]; then
+    expect -c "
+        # see http://urx3.nu/oINs
+        set timeout 30
+        spawn ssh $1
+        expect ":"
+        send \"hyUOMaDlUwvUBuo\n\"
+        expect "webistrano"
+        send \"sudo -s\n\"
+        expect "hiromikimura:"
+        send \"hyUOMaDlUwvUBuo\n\"
+        expect "webistrano"
+        send \"su - app\n\"
+        expect "webistrano"
+        send \"ssh $path\n\"
+        interact
+        "
+  else
+    expect -c "
+        # see http://urx3.nu/oINs
+        set timeout 30
+        spawn ssh $1
+        expect ":"
+        send \"hyUOMaDlUwvUBuo\n\"
+        expect "webistrano"
+        send \"sudo -s\n\"
+        expect "hiromikimura:"
+        send \"hyUOMaDlUwvUBuo\n\"
+        expect "webistrano"
+        send \"su - app\n\"
+        interact
+        "
+  fi
+else
+  ssh $@
+fi
+
+# ログアウトしたあとはデフォルトのテーマに戻す
+set_term_profile "Solarized Dark"

@@ -1,0 +1,13 @@
+local peco_path percol_path
+zstyle -s ":anyframe:selector:percol:" command percol_path || percol_path='percol'
+
+if [[ $# -gt 0 ]]; then
+  ${=percol_path} --query "$@"
+else
+  ${=percol_path}
+fi
+
+# Local Variables:
+# mode: Shell-Script
+# End:
+# vim: ft=zsh

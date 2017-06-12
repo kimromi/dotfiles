@@ -1,0 +1,9 @@
+# -r : reverses the order of the commands
+# -n : suppresses command numbers
+# '!a[$0]++' : prints unique lines
+history -n -r 1 | awk '!a[$0]++'
+
+# Local Variables:
+# mode: Shell-Script
+# End:
+# vim: ft=zsh

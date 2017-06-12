@@ -1,0 +1,9 @@
+# require cdr
+# for more information, see REMEMBERING RECENT DIRECTORIES section in man zshcontrib(1)
+
+cdr -l | sed 's/^[^ ][^ ]*  *//'
+
+# Local Variables:
+# mode: Shell-Script
+# End:
+# vim: ft=zsh

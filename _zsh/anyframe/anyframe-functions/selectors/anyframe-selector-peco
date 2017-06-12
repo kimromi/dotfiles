@@ -1,0 +1,13 @@
+local peco_path
+zstyle -s ":anyframe:selector:peco:" command peco_path || peco_path='peco'
+
+if [[ $# -gt 0 ]]; then
+  ${=peco_path} --query "$@"
+else
+  ${=peco_path}
+fi
+
+# Local Variables:
+# mode: Shell-Script
+# End:
+# vim: ft=zsh

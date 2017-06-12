@@ -1,0 +1,8 @@
+anyframe-source-history \
+  | anyframe-selector-auto "$LBUFFER" \
+  | anyframe-action-execute
+
+# Local Variables:
+# mode: Shell-Script
+# End:
+# vim: ft=zsh

@@ -1,4 +1,5 @@
+#!/bin/sh
 set -x
 
-cp ./_zshrc ~/.zshrc
-cp -R ./_zsh ~/.zsh
+ln -sf $PWD/_zshrc ~/.zshrc
+ln -sf $PWD/_zsh ~/.zsh

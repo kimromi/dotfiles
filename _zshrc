@@ -38,24 +38,13 @@ zstyle ':vcs_info:*' formats "%F{blue}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
 function tracking() {
-    local todoist="\e[33mtodos:$(todoist list | wc -l | sed -e 's/^[ \t]*//')\e[m"
-
-    local tgc=$(toggl --cache --csv current)
-    local tgc_time=$(echo $tgc | grep Duration | cut -d ',' -f 2)
-    local tgc_dsc=$(echo $tgc | grep Description | cut -d ',' -f 2 | cut -c 1-20)
-    local short_tgc_dsc=$(if [ $(echo $tgc_dsc | wc -m) -lt 20 ]; then echo $tgc_dsc; else echo "${tgc_dsc}.."; fi)
-    if [ ! -n "$tgc_time" ]; then
-        local toggl="\e[35m[ No Time Entry ]\e[m"
-    else
-        local toggl="\e[36m[ $tgc_time $short_tgc_dsc ]\e[m"
-    fi
     local nyah="\e[32mmitaka\e[m"
     if [ "$OS_AUTH_URL" = "http://10.51.3.52:5000/v2.0/" ]; then
         local nyah="\e[34mmitaka\e[m"
     else
         local nyah="\e[34mhavana\e[m"
     fi
-    echo " # $todoist  $toggl  nyah:$nyah"
+    echo " nyah:$nyah"
 }
 precmd () {
     vcs_info

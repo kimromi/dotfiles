@@ -105,10 +105,10 @@ set smarttab                     "新しい行を作った時に高度な自動�
 " 基本的な設定
 "--------------------
 
-set backupdir=~/other/vimbackup  "バックアップファイルのディレクトリを指定する
+set backupdir=~/.vimbackup       "バックアップファイルのディレクトリを指定する
 set clipboard=unnamed,autoselect "クリップボードをWindowsと連携する
 set nocompatible                 "vi互換をオフする
-set directory=~/other/vimbackup  "スワップファイル用のディレクトリを指定する
+set directory=~/.vimbackup       "スワップファイル用のディレクトリを指定する
 set hidden                       "変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch                    "インクリメンタルサーチを行う
 set ignorecase                   "大文字小文字を区別しない

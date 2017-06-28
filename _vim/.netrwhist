@@ -1,6 +1,6 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/PMAC243S/repos/git.pepabo.com/muumuu-domain/www-muumuu-domain/public/conpane/template'
-let g:netrw_dirhist_2='/Users/PMAC243S/repos/git.pepabo.com/muumuu-domain'
-let g:netrw_dirhist_3='/Users/PMAC243S/repos/git.pepabo.com/muumuu-domain/domainapi-muumuu-domain/application'
-let g:netrw_dirhist_4='/Users/PMAC243S/repos/git.pepabo.com/muumuu-domain/muu.rb/lib/muumuu/osaipo'
+let g:netrw_dirhist_1='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/www-muumuu-domain/public/common/Paperboy/cache'
+let g:netrw_dirhist_2='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/www-muumuu-domain/order'
+let g:netrw_dirhist_3='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain'
+let g:netrw_dirhist_4='/Users/hiromikimura/repos/git.pepabo.com'

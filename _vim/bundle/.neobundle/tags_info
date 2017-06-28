@@ -15,6 +15,7 @@ syntastic
 tabular
 taglist.vim
 unite.vim
+vim-colors-solarized
 vim-go
 vim-markdown
 vim-markdown-quote-syntax

@@ -27,6 +27,7 @@ NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'altercation/vim-colors-solarized'
 
 " Emmet
 NeoBundle 'mattn/emmet-vim'
@@ -143,9 +144,10 @@ set syntax=markdown
 
 " カラー設定
 syntax enable
+set t_Co=16
 set background=dark
+let g:solarized_termcolors=16
 colorscheme solarized
-let g:solarized_termcolors=256
 
 " st タブ作成 sx タブ閉じる sn,sp タブ移動
 nnoremap <silent> <C-t> :tabnew<CR>:VimFiler<CR>

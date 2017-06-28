@@ -37,22 +37,17 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{red}"
 zstyle ':vcs_info:*' formats "%F{blue}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
-function tracking() {
-    local nyah="\e[32mmitaka\e[m"
-    if [ "$OS_AUTH_URL" = "http://10.51.3.52:5000/v2.0/" ]; then
-        local nyah="\e[34mmitaka\e[m"
-    else
-        local nyah="\e[34mhavana\e[m"
-    fi
-    echo " nyah:$nyah"
-}
 precmd () {
     vcs_info
-    tracking
+    local nyah="mitaka"
+    if [ "$OS_AUTH_URL" = "http://10.51.3.1:5000/v2.0/" ]; then
+        local nyah="havana"
+    fi
+    echo "nyah: $nyah"
 }
 local p_mark="%(?,%F{green},%F{red})%#%f"
 PROMPT=" %F{white}%C%f"'${vcs_info_msg_0_}'" $p_mark "
-#RPROMPT="%F{green}[%~]%f"
+#RPROMPT="nyah: %F{green}$nyah%f"
 
 # ls color
 eval "$(gdircolors ~/.dircolors-solarized)"
@@ -165,7 +160,7 @@ zle -N peco-ssh
 bindkey '^h' peco-ssh
 
 ## nodebrew
-export PATH=$PATH:/Users/kimromi/.nodebrew/current/bin
+export PATH=$PATH:~/.nodebrew/current/bin
 ## rbenv settings
 export RBENV_ROOT="$HOME/.rbenv"
 PATH="$RBENV_ROOT/shims:$PATH"
@@ -176,130 +171,20 @@ fi
 export GOPATH=$HOME/.go
 export PATH=$HOME/.go/bin:$PATH
 ## pyenv settings
-#export PYENV_ROOT="$HOME/.pyenv"
-#export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 #source $HOME/.pythonbrew/etc/bashrc
 ## postgresql
 export PGDATA=/usr/local/var/postgres
-
-## ---------- todoist ----------
-if [ `which todoist` ]; then
-else
-    go get github.com/sachaos/todoist
-    echo "todoist command installed."
-    todoist
-fi
-# todo add
-function da () {
-    if [ -n "$2" ]; then
-        todoist add $1 -P $2
-    else
-        todoist add $1
-    fi
-    todoist --color list
-}
-# todo complete
-function dc () {
-    if [ -n "$1" ]; then
-        local target=$(todoist list | egrep "^$1 " | head -n1 | cut -d ' ' -f 6)
-        if [ -n "$target" ]; then
-            todoist close $1
-            echo "$target is completed!!"
-        else
-            echo "not found."
-        fi
-    fi
-}
-# todo delete
-function dd () {
-    if [ -n "$1" ]; then
-        local target=$(todoist list | egrep "^$1 " | head -n1 | cut -d ' ' -f 6)
-        if [ -n "$target" ]; then
-            todoist delete $1
-            echo "$target is deleted."
-        else
-            echo "not found."
-        fi
-    fi
-}
-function d () {
-    todoist --project-namespace --namespace --color list && echo
-}
-
-function peco-todoist-project () {
-    local SELECTED_PROJECT="$(todoist projects | peco | head -n1 | cut -d ' ' -f 1)"
-    if [ -n "$SELECTED_PROJECT" ]; then
-        if [ -n "$LBUFFER" ]; then
-            local new_left="${LBUFFER%\ } $SELECTED_PROJECT"
-        else
-            local new_left="$SELECTED_PROJECT"
-        fi
-        BUFFER=${new_left}${RBUFFER}
-        CURSOR=${#new_left}
-    fi
-}
-zle -N peco-todoist-project
-bindkey '^dp' peco-todoist-project
-
-function peco-todoist-list () {
-    local SELECTED_TODO="$(todoist list | peco | head -n1 | cut -d ' ' -f 1)"
-    if [ -n "$SELECTED_TODO" ]; then
-        if [ -n "$LBUFFER" ]; then
-            local new_left="${LBUFFER%\ } $SELECTED_TODO"
-        else
-            local new_left="$SELECTED_TODO"
-        fi
-        BUFFER=${new_left}${RBUFFER}
-        CURSOR=${#new_left}
-    fi
-}
-zle -N peco-todoist-list
-bindkey '^dl' peco-todoist-list
-
-# ---------- toggl ----------
-if [ `which toggl` ]; then
-else
-    go get github.com/sachaos/toggl
-    echo "toggl command installed."
-    toggl
-fi
-function peco-todoist-toggl () {
-    local SELECTED_TODO="$(todoist list | peco | head -n1 | cut -d ' ' -f 6)"
-    if [ -n "$SELECTED_TODO" ]; then
-        BUFFER="toggl start $SELECTED_TODO -P "
-        CURSOR=$#BUFFER
-        peco-toggl-project
-    fi
-}
-zle -N peco-todoist-toggl
-bindkey '^t' peco-todoist-toggl
-
-function peco-toggl-project () {
-    local SELECTED_PROJECT="$(toggl projects | peco | head -n1 | cut -d ' ' -f 1)"
-    if [ -n "$SELECTED_PROJECT" ]; then
-        if [ -n "$LBUFFER" ]; then
-            local new_left="${LBUFFER%\ } $SELECTED_PROJECT"
-        else
-            local new_left="$SELECTED_PROJECT"
-        fi
-        BUFFER=${new_left}${RBUFFER}
-        CURSOR=${#new_left}
-    fi
-}
-zle -N peco-toggl-project
-bindkey '^lp' peco-toggl-project
-
-alias l='toggl'
-alias start='toggl start'
-alias stop='toggl stop'
-alias sync='todoist sync && toggl current > /dev/null'
 
 # other
 export EDITOR='vim'
 # 日本語対応
 export PATH="/usr/local/opt/libxml2/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
+# homebrew openssl
+export PATH=/usr/local/opt/openssl/bin:$PATH
 
 # pepabo
 if [ -f ~/.zshrc-pepabo ]; then

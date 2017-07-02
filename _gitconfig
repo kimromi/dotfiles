@@ -17,3 +17,7 @@
   path = ~/.gitconfig-pepabo
 [alias]
   see = browse
+[color]
+  diff = auto
+  status = auto
+  branch = auto

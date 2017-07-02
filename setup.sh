@@ -7,3 +7,4 @@ ln -sf $PWD/_dircolors-solarized ~/.dircolors-solarized
 ln -sf $PWD/_tmux.conf ~/.tmux.conf
 ln -sf $PWD/_vimrc ~/.vimrc
 ln -sf $PWD/_vim ~/.vim
+ln -sf $PWD/_gitconfig ~/.gitconfig

@@ -113,6 +113,7 @@ alias gf='git fetch'
 alias gc='git commit'
 alias gbreset="gf -p && gb --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %"
 alias git=hub
+alias gs='hub browse'
 alias gph='git push heroku master'
 function gco () {
     git checkout "$@"

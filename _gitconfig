@@ -13,7 +13,7 @@
   user = kimromi
 [hub]
   host = git.pepabo.com
-[includeIf "gitdir:~/repos/git.pepabo.com"]
+[includeIf "gitdir:~/repos/git.pepabo.com/"]
   path = ~/.gitconfig-pepabo
 [alias]
   see = browse

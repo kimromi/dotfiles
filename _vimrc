@@ -82,6 +82,7 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'tyru/open-browser-github.vim'
 let g:openbrowser_github_url_exists_check = 'ignore'
 let g:openbrowser_github_always_used_branch = 'master'
+:command OG OpenGithubFile
 
 "NeoBundle 'editorconfig/editorconfig-vim'
 

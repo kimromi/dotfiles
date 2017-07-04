@@ -17,6 +17,7 @@ taglist.vim
 unite.vim
 vim-colors-solarized
 vim-go
+vim-javascript
 vim-markdown
 vim-markdown-quote-syntax
 vim-pug

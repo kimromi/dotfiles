@@ -90,6 +90,8 @@ let g:openbrowser_github_always_used_branch = 'master'
 NeoBundle 'posva/vim-vue'
 NeoBundle 'digitaltoad/vim-pug'
 
+NeoBundle 'pangloss/vim-javascript'
+
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()

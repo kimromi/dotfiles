@@ -1,10 +1,10 @@
 #!/bin/sh
 set -x
 
-ln -sf $PWD/_zshrc ~/.zshrc
-ln -sf $PWD/_zsh ~/.zsh
-ln -sf $PWD/_dircolors-solarized ~/.dircolors-solarized
-ln -sf $PWD/_tmux.conf ~/.tmux.conf
-ln -sf $PWD/_vimrc ~/.vimrc
-ln -sf $PWD/_vim ~/.vim
-ln -sf $PWD/_gitconfig ~/.gitconfig
+ln -sf $PWD/.zshrc ~/.zshrc
+ln -sf $PWD/.zsh ~/.zsh
+ln -sf $PWD/.dircolors-solarized ~/.dircolors-solarized
+ln -sf $PWD/.tmux.conf ~/.tmux.conf
+ln -sf $PWD/.vimrc ~/.vimrc
+ln -sf $PWD/.vim ~/.vim
+ln -sf $PWD/.gitconfig ~/.gitconfig

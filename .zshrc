@@ -39,11 +39,6 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 setopt prompt_subst
 precmd () {
     vcs_info
-    local nyah="mitaka"
-    if [ "$OS_AUTH_URL" = "http://10.51.3.1:5000/v2.0/" ]; then
-        local nyah="havana"
-    fi
-    echo "nyah: $nyah"
 }
 local p_mark="%(?,%F{green},%F{red})%#%f"
 PROMPT=" %F{white}%C%f"'${vcs_info_msg_0_}'" $p_mark "

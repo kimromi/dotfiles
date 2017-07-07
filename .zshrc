@@ -42,7 +42,6 @@ precmd () {
 }
 local p_mark="%(?,%F{green},%F{red})%#%f"
 PROMPT=" %F{white}%C%f"'${vcs_info_msg_0_}'" $p_mark "
-#RPROMPT="nyah: %F{green}$nyah%f"
 
 # ls color
 eval "$(gdircolors ~/.dircolors-solarized)"
@@ -50,12 +49,7 @@ alias ls='gls --color=auto'
 
 # aliases
 ## convenience
-alias chrome="open '/Applications/Google Chrome.app'"
-alias slack="open '/Applications/Slack.app'"
-alias line="open '/Applications/LINE.app'"
-alias pass="open '/Applications/Enpass.app'"
 alias ll='ls -l --color=auto'
-alias vf='vim +VimFiler'
 alias be='bundle exec'
 alias vi='/usr/local/bin/vim'
 alias vim='/usr/local/bin/vim'
@@ -140,7 +134,6 @@ function peco-history-selection() {
     CURSOR=$#BUFFER
     zle reset-prompt
 }
-
 zle -N peco-history-selection
 bindkey '^r' peco-history-selection
 

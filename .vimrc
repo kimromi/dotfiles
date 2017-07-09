@@ -26,7 +26,7 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'vim-scripts/taglist.vim'
 NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'scrooloose/syntastic'
 NeoBundle 'altercation/vim-colors-solarized'
 
 " Emmet
@@ -90,7 +90,11 @@ let g:openbrowser_github_always_used_branch = 'master'
 NeoBundle 'posva/vim-vue'
 NeoBundle 'digitaltoad/vim-pug'
 
+"for javascript
 NeoBundle 'pangloss/vim-javascript'
+
+NeoBundle 'w0rp/ale'
+let g:ale_emit_conflict_warnings = 0
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
@@ -236,16 +240,16 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_def_mapping_enabled = 0
 
-let g:syntastic_check_on_open = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_echo_current_error = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_enable_highlighting = 1
-" なんでか分からないけど php コマンドのオプションを上書かないと動かなかった
-let g:syntastic_php_php_args = '-l'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_enable_signs = 1
+"let g:syntastic_echo_current_error = 1
+"let g:syntastic_auto_loc_list = 2
+"let g:syntastic_enable_highlighting = 1
+"" なんでか分からないけど php コマンドのオプションを上書かないと動かなかった
+"let g:syntastic_php_php_args = '-l'
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 function Foo()
   echo "foo"

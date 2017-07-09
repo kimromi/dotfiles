@@ -93,8 +93,13 @@ NeoBundle 'digitaltoad/vim-pug'
 "for javascript
 NeoBundle 'pangloss/vim-javascript'
 
+"非同期構文チェック
 NeoBundle 'w0rp/ale'
-let g:ale_emit_conflict_warnings = 0
+let g:ale_sign_column_always = 1   "左端のバーを出しっぱなしにする
+
+"for ruby
+" 自動でendをいれる
+NeoBundle 'tpope/vim-endwise'
 
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck

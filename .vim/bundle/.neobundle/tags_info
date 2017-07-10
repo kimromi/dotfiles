@@ -1,3 +1,4 @@
+ale
 dein.vim
 emmet-vim
 neobundle.vim
@@ -11,11 +12,11 @@ open-browser-github.vim
 open-browser.vim
 previm
 shabadou.vim
-syntastic
 tabular
 taglist.vim
 unite.vim
 vim-colors-solarized
+vim-endwise
 vim-go
 vim-javascript
 vim-markdown

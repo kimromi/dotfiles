@@ -101,6 +101,9 @@ let g:ale_sign_column_always = 1   "左端のバーを出しっぱなしにす�
 " 自動でendをいれる
 NeoBundle 'tpope/vim-endwise'
 
+"for slim
+NeoBundle 'slim-template/vim-slim'
+
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()

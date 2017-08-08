@@ -7,3 +7,4 @@ augroup filetypedetect
   au BufRead,BufNewFile *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+autocmd BufRead,BufNewFile *.slim setfiletype slim

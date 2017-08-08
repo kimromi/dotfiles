@@ -25,6 +25,7 @@ vim-pug
 vim-qfstatusline
 vim-quickrun
 vim-ref
+vim-slim
 vim-surround
 vim-vue
 vim-watchdogs

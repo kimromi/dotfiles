@@ -5,6 +5,9 @@ augroup filetypedetect
   au BufRead,BufNewFile *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
   au BufRead,BufNewFile *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
   au BufRead,BufNewFile *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  au BufRead,BufNewFile *.scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  au BufRead,BufNewFile *.css setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  au BufRead,BufNewFile *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 autocmd BufRead,BufNewFile *.slim setfiletype slim

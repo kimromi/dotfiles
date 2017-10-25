@@ -138,7 +138,7 @@ zle -N peco-history-selection
 bindkey '^r' peco-history-selection
 
 function peco-ssh () {
-    local ip=$(cat $HOME/.muumuu/hosts | peco | awk "{print \$1}")
+    local ip=$(cat ~/.muumuu/hosts > /tmp/hosts && cat ~/repos/git.pepabo.com/muumuu-domain/chef/terraform/terraform.tfstate | jq -r '.modules[].resources[].primary.attributes | [.access_ip_v4, .name] | @tsv' | grep muumuu-domain.com | sort -k2 >> /tmp/hosts && cat /tmp/hosts | peco | awk "{print \$1}")
     if [ -n "$ip" ]; then
         BUFFER="ssh hiromikimura@$ip"
         zle accept-line

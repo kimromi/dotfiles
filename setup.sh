@@ -8,3 +8,4 @@ ln -sf $PWD/.tmux.conf ~/.tmux.conf
 ln -sf $PWD/.vimrc ~/.vimrc
 ln -sf $PWD/.vim ~/.vim
 ln -sf $PWD/.gitconfig ~/.gitconfig
+ln -sf $PWD/.tigrc ~/.tigrc

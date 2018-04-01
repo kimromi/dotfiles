@@ -259,6 +259,8 @@ let g:go_def_mapping_enabled = 0
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
+let g:vimfiler_ignore_pattern = '^\%(.git\|.DS_Store\)$'
+
 function Foo()
   echo "foo"
 endfunction

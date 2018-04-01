@@ -51,6 +51,7 @@ alias ls='gls --color=auto'
 ## convenience
 alias ll='ls -l --color=auto'
 alias be='bundle exec'
+alias bi='bundle install -j4 --path vendor/bundle'
 alias vi='/usr/local/bin/vim'
 alias vim='/usr/local/bin/vim'
 alias ssh=~/.zsh/plugin/ssh-customize
@@ -138,7 +139,7 @@ zle -N peco-history-selection
 bindkey '^r' peco-history-selection
 
 function peco-ssh () {
-    local ip=$(cat ~/.muumuu/hosts > /tmp/hosts && cat ~/repos/git.pepabo.com/muumuu-domain/chef/terraform/terraform.tfstate | jq -r '.modules[].resources[].primary.attributes | [.access_ip_v4, .name] | @tsv' | grep muumuu-domain.com >> /tmp/hosts && cat /tmp/hosts | sort -k2 | peco | awk "{print \$1}")
+    local ip=$(cat ~/.muumuu/hosts > /tmp/hosts && cat ~/repos/git.pepabo.com/muumuu-domain/terraform/terraform.tfstate | jq -r '.modules[].resources[].primary.attributes | [.access_ip_v4, .name] | @tsv' | grep muumuu-domain.com >> /tmp/hosts && cat /tmp/hosts | sort -k2 | peco | awk "{print \$1}")
     if [ -n "$ip" ]; then
         local user=$(echo centos\\nmuu-deploy\\nkimromi\\nhiromikimura\\napp | peco)
         BUFFER="ssh $user@$ip"

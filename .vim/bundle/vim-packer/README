@@ -1,0 +1,5 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=5067
+
+This plugin adds a `:Packer` command that runs packer, with tab
+completion of subcommands.
+

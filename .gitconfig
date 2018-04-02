@@ -3,6 +3,7 @@
   editor = vim
 [user]
   name = kimromi
+  id = kimromi
   email = kimromi4@gmail.com
 [ghq]
   root = ~/repos
@@ -13,6 +14,7 @@
   user = kimromi
 [hub]
   host = git.pepabo.com
+  host = github.com
 [includeIf "gitdir:~/repos/git.pepabo.com/"]
   path = ~/.gitconfig-pepabo
 [alias]

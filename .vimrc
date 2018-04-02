@@ -104,6 +104,12 @@ NeoBundle 'tpope/vim-endwise'
 "for slim
 NeoBundle 'slim-template/vim-slim'
 
+" for hashicorp
+NeoBundle 'hashivim/vim-hashicorp-tools'
+
+" TypeScript
+NeoBundle 'leafgarland/typescript-vim'
+
 " vimrc に記述されたプラグインでインストールされていないものがないかチェックする
 NeoBundleCheck
 call neobundle#end()
@@ -167,7 +173,7 @@ colorscheme solarized
 " st タブ作成 sx タブ閉じる sn,sp タブ移動
 nnoremap <silent> <C-t> :tabnew<CR>:VimFiler<CR>
 nnoremap <silent> <C-w> :q<CR>
-nnoremap <silent> <C-h> :tabNext<CR>
+nnoremap <silent> <C-h> :tabprevious<CR>
 nnoremap <silent> <C-l> :tabnext<CR>
 
 " PHP
@@ -258,6 +264,8 @@ let g:go_def_mapping_enabled = 0
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
+
+let g:vimfiler_ignore_pattern = '^\%(.git\|.DS_Store\)$'
 
 function Foo()
   echo "foo"

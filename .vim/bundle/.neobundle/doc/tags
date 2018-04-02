@@ -836,6 +836,9 @@ b:ref_perldoc_mode	ref-perldoc.txt	/*b:ref_perldoc_mode*
 b:ref_perldoc_word	ref-perldoc.txt	/*b:ref_perldoc_word*
 before	solarized.txt	/*before*
 cS	surround.txt	/*cS*
+consul	consul.txt	/*consul*
+consul-:consul	consul.txt	/*consul-:consul*
+consul.txt	consul.txt	/*consul.txt*
 cs	surround.txt	/*cs*
 dein	dein.txt	/*dein*
 dein#add()	dein.txt	/*dein#add()*
@@ -1804,6 +1807,8 @@ neosnippet-unite-source-neosnippet/user	neosnippet.txt	/*neosnippet-unite-source
 neosnippet-unite-sources	neosnippet.txt	/*neosnippet-unite-sources*
 neosnippet-variables	neosnippet.txt	/*neosnippet-variables*
 neosnippet.txt	neosnippet.txt	/*neosnippet.txt*
+nomadproject	nomadproject.txt	/*nomadproject*
+nomadproject.txt	nomadproject.txt	/*nomadproject.txt*
 open-browser	openbrowser.txt	/*open-browser*
 openbrowser	openbrowser.txt	/*openbrowser*
 openbrowser#load()	openbrowser.txt	/*openbrowser#load()*
@@ -1839,6 +1844,11 @@ openbrowser-thanks	openbrowser.txt	/*openbrowser-thanks*
 openbrowser-url-detection	openbrowser.txt	/*openbrowser-url-detection*
 openbrowser-variables	openbrowser.txt	/*openbrowser-variables*
 openbrowser.txt	openbrowser.txt	/*openbrowser.txt*
+ottoproject	ottoproject.txt	/*ottoproject*
+ottoproject.txt	ottoproject.txt	/*ottoproject.txt*
+packer	packer.txt	/*packer*
+packer-:packer	packer.txt	/*packer-:packer*
+packer.txt	packer.txt	/*packer.txt*
 previm#open()	previm.txt	/*previm#open()*
 previm#refresh()	previm.txt	/*previm#refresh()*
 previm-changelog	previm.txt	/*previm-changelog*
@@ -2108,6 +2118,9 @@ taglist-session	taglist.txt	/*taglist-session*
 taglist-todo	taglist.txt	/*taglist-todo*
 taglist-using	taglist.txt	/*taglist-using*
 taglist.txt	taglist.txt	/*taglist.txt*
+terraform	terraform.txt	/*terraform*
+terraform-:terraform	terraform.txt	/*terraform-:terraform*
+terraform.txt	terraform.txt	/*terraform.txt*
 toggle-background	solarized.txt	/*toggle-background*
 toggle-bg	solarized.txt	/*toggle-bg*
 togglebg	solarized.txt	/*togglebg*
@@ -2414,6 +2427,11 @@ vS	surround.txt	/*vS*
 v_<C-y>,	emmet.txt	/*v_<C-y>,*
 v_<Plug>(unite_toggle_selected_candidates)	unite.txt	/*v_<Plug>(unite_toggle_selected_candidates)*
 v_vimshell_default_key_mappings	vimshell.txt	/*v_vimshell_default_key_mappings*
+vagrant	vagrant.txt	/*vagrant*
+vagrant-:Vagrant	vagrant.txt	/*vagrant-:Vagrant*
+vagrant.txt	vagrant.txt	/*vagrant.txt*
+vaultproject	vaultproject.txt	/*vaultproject*
+vaultproject.txt	vaultproject.txt	/*vaultproject.txt*
 vgS	surround.txt	/*vgS*
 vim-colors-solarized	solarized.txt	/*vim-colors-solarized*
 vim-go	vim-go.txt	/*vim-go*

@@ -138,9 +138,9 @@ zle -N peco-history-selection
 bindkey '^r' peco-history-selection
 
 function peco-ssh () {
-    local ip=$(cat ~/.muumuu/hosts > /tmp/hosts && cat ~/repos/git.pepabo.com/muumuu-domain/chef/terraform/terraform.tfstate | jq -r '.modules[].resources[].primary.attributes | [.access_ip_v4, .name] | @tsv' | grep muumuu-domain.com >> /tmp/hosts && cat /tmp/hosts | sort -k2 | peco | awk "{print \$1}")
+    local ip=$(cat ~/.muumuu/hosts > /tmp/hosts && cat ~/repos/git.pepabo.com/muumuu-domain/terraform/terraform.tfstate | jq -r '.modules[].resources[].primary.attributes | [.access_ip_v4, .name] | @tsv' | grep muumuu-domain.com >> /tmp/hosts && cat /tmp/hosts | sort -k2 | peco | awk "{print \$1}")
     if [ -n "$ip" ]; then
-        local user=$(echo centos\\nmuu-deploy\\nkimromi\\nhiromikimura\\napp | peco)
+        local user=$(echo centos\\nmuu-deploy\\nkimromi\\nhiromikimura\\ndeploy | peco)
         BUFFER="ssh $user@$ip"
         zle accept-line
     fi
@@ -149,6 +149,14 @@ function peco-ssh () {
 zle -N peco-ssh
 bindkey '^h' peco-ssh
 
+## phpbrew
+source $HOME/.phpbrew/bashrc
+export PATH=/usr/local/opt/bzip2/bin:$PATH
+export PATH=/usr/local/opt/curl/bin:$PATH
+export PATH=/usr/local/opt/icu4c/bin:$PATH
+export PATH=/usr/local/opt/icu4c/sbin:$PATH
+## composer
+export PATH=$HOME/.composer/vendor/bin:$PATH
 ## nodebrew
 export PATH=$PATH:~/.nodebrew/current/bin
 ## rbenv settings
@@ -180,3 +188,6 @@ export PATH=/usr/local/opt/openssl/bin:$PATH
 if [ -f ~/.zshrc-pepabo ]; then
     source ~/.zshrc-pepabo
 fi
+
+# added by travis gem
+[ -f /Users/hiromikimura/.travis/travis.sh ] && source /Users/hiromikimura/.travis/travis.sh

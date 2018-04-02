@@ -51,6 +51,7 @@ alias ls='gls --color=auto'
 ## convenience
 alias ll='ls -l --color=auto'
 alias be='bundle exec'
+alias bi='bundle install -j4 --path vendor/bundle'
 alias vi='/usr/local/bin/vim'
 alias vim='/usr/local/bin/vim'
 alias ssh=~/.zsh/plugin/ssh-customize

@@ -1,2 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/admin-muumuu-domain/config/deploy'
+let g:netrw_dirhist_2='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/muu.rb/db/migrate'
+let g:netrw_dirhist_3='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/muu.rb/spec/controllers/concerns'
+let g:netrw_dirhist_4='/Users/hiromikimura/repos/github.com/kimromi/domain_validator_jp/lib/domain_validator_jp'
+let g:netrw_dirhist_5='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/muu.js/capistrano/stages'
+let g:netrw_dirhist_6='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/muu.rb/vendor'

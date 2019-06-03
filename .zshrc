@@ -3,6 +3,7 @@ bindkey "^[[3~" delete-char  # fn + del
 setopt histignorealldups
 setopt auto_pushd
 setopt pushd_ignore_dups
+setopt nonomatch
 
 # completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -13,6 +14,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_dups
 setopt share_history
+export HISTTIMEFORMAT='%F %T '
 
 # tmux
 if [[ ! -d ~/.tmux/plugins/tpm ]];then
@@ -50,10 +52,14 @@ alias ls='gls --color=auto'
 # aliases
 ## convenience
 alias ll='ls -l --color=auto'
+alias nr='npm run'
+alias k='kubectl'
+alias dc='docker-compose'
 alias be='bundle exec'
 alias bi='bundle install -j4 --path vendor/bundle'
 alias vi='/usr/local/bin/vim'
 alias vim='/usr/local/bin/vim'
+alias ip='curl httpbin.org/ip'
 alias ssh=~/.zsh/plugin/ssh-customize
 function re () {
     repo=$(ghq list -p | peco)
@@ -138,18 +144,6 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^r' peco-history-selection
 
-function peco-ssh () {
-    local ip=$(cat ~/.muumuu/hosts > /tmp/hosts && cat ~/repos/git.pepabo.com/muumuu-domain/terraform/terraform.tfstate | jq -r '.modules[].resources[].primary.attributes | [.access_ip_v4, .name] | @tsv' | grep muumuu-domain.com >> /tmp/hosts && cat /tmp/hosts | sort -k2 | peco | awk "{print \$1}")
-    if [ -n "$ip" ]; then
-        local user=$(echo centos\\nmuu-deploy\\nkimromi\\nhiromikimura\\ndeploy | peco)
-        BUFFER="ssh $user@$ip"
-        zle accept-line
-    fi
-    zle clear-screen
-}
-zle -N peco-ssh
-bindkey '^h' peco-ssh
-
 ## phpbrew
 source $HOME/.phpbrew/bashrc
 export PATH=/usr/local/opt/bzip2/bin:$PATH
@@ -192,3 +186,6 @@ fi
 
 # added by travis gem
 [ -f /Users/hiromikimura/.travis/travis.sh ] && source /Users/hiromikimura/.travis/travis.sh
+
+# vscode
+function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "." }

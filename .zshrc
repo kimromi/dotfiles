@@ -115,7 +115,7 @@ function gco () {
     git checkout "$@"
     if [ "master" = "$1" ]; then gbreset; fi
 }
-alias master='gco master'
+alias master='gco master && gl && gbreset'
 
 # function aliases
 function gfp() { git push && git ftp push -s "$1" }
@@ -190,3 +190,6 @@ fi
 
 # vscode
 function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "." }
+
+# anyenv
+eval "$(anyenv init -)"

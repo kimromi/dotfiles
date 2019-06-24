@@ -1,11 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/hiromikimura/.nyah'
-let g:netrw_dirhist_2='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/chef/nodes'
-let g:netrw_dirhist_3='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/domainapi-muumuu-domain/application/library/GMOMultiPkg/src/conf'
-let g:netrw_dirhist_4='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/muu.php/lib/multiPayment/conf'
-let g:netrw_dirhist_5='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/muu.rb/spec'
-let g:netrw_dirhist_6='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/muu.php/views'
-let g:netrw_dirhist_7='/Users/hiromikimura/Downloads/0.4.1_latest_only using html, css, js'
-let g:netrw_dirhist_8='/Users/hiromikimura/.ssh/docker'
-let g:netrw_dirhist_9='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/muu.rb/vendor'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/hiromikimura/.zsh'
+let g:netrw_dirhist_2='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/terraform/.terraform'
+let g:netrw_dirhist_3='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/muu.rb/vendor'
+let g:netrw_dirhist_4='/Users/hiromikimura/repos/git.pepabo.com/muumuu-domain/admin-muumuu-domain/valuation'

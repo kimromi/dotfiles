@@ -1,6 +1,9 @@
 #!/bin/sh
 set -x
 
+which brew >/dev/null || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew bundle
+
 ln -sf $PWD/.zshrc ~/.zshrc
 ln -sf $PWD/.zsh ~/.zsh
 ln -sf $PWD/.dircolors-solarized ~/.dircolors-solarized

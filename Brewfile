@@ -9,10 +9,9 @@ brew "peco"
 brew "ghq"
 brew "tig"
 brew "jq"
+brew "pt"
 
 brew "anyenv"
-brew "pyenv"
-brew "rbenv"
 brew "tfenv"
 
 brew "kubectl"

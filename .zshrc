@@ -153,22 +153,9 @@ export PATH=/usr/local/opt/icu4c/bin:$PATH
 export PATH=/usr/local/opt/icu4c/sbin:$PATH
 ## composer
 export PATH=$HOME/.composer/vendor/bin:$PATH
-## nodebrew
-export PATH=$PATH:~/.nodebrew/current/bin
-## rbenv settings
-export RBENV_ROOT="$HOME/.rbenv"
-PATH="$RBENV_ROOT/shims:$PATH"
-if which rbenv > /dev/null; then
-   eval "$(rbenv init -)";
-fi
 ## golang settings
 export GOPATH=$HOME/.go
 export PATH=$HOME/.go/bin:$PATH
-## pyenv settings
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-#source $HOME/.pythonbrew/etc/bashrc
 ## postgresql
 export PGDATA=/usr/local/var/postgres
 

@@ -146,7 +146,6 @@ zle -N peco-history-selection
 bindkey '^r' peco-history-selection
 
 ## phpbrew
-source $HOME/.phpbrew/bashrc
 export PATH=/usr/local/opt/bzip2/bin:$PATH
 export PATH=/usr/local/opt/curl/bin:$PATH
 export PATH=/usr/local/opt/icu4c/bin:$PATH

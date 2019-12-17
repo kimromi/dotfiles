@@ -4,6 +4,7 @@ setopt histignorealldups
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt nonomatch
+setopt ignoreeof
 
 # completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -65,40 +66,18 @@ function re () {
     repo=$(ghq list -p | peco)
     if [ -n "$repo" ]; then cd $repo;fi
 }
-function note () {
-    local dir=$HOME/Dropbox/notes
-
-    # add
-    if [ "$1" = "-a" ] || [ "$1" = "--add" ]; then
-        if [ -n "$2" ]; then
-            vi $dir/$2
-        fi
-
-    # delete
-    elif [ "$1" = "-r" ] || [ "$1" = "--rm" ]; then
-        local note=$(ls $dir | peco)
-        if [ -n "$note" ]; then
-            rm $dir/$note
-            echo "$note is deleted."
-        fi
-
-    # edit
-    elif [ "$1" = "-e" ] || [ "$1" = "--edit" ]; then
-        local note=$(ls $dir | peco)
-        if [ -n "$note" ]; then
-            vi $dir/$note
-        fi
-
-    # show
-    else
-        local note=$(ls $dir | peco)
-        if [ -n "$note" ]; then
-            #markdown $dir/$note | lynx -stdin
-            BUFFER=$dir/$note
-            cat $dir/$note
-        fi
+function peco-git-delete-branch() {
+    local selected_branch=$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | \
+        perl -pne 's{^refs/heads/}{}' | \
+        peco)
+    if [ -n "$selected_branch" ] && [ "release" != "$selected_branch" ]; then
+        BUFFER="git branch -D ${selected_branch}"
+        CURSOR=$#BUFFER
+        zle reset-prompt
     fi
 }
+zle -N peco-git-delete-branch
+bindkey '^d' peco-git-delete-branch
 
 ## git
 alias gl='git pull'
@@ -107,13 +86,14 @@ alias gb='git branch'
 alias gm='git merge'
 alias gf='git fetch'
 alias gc='git commit'
-alias gbreset="gf -p && gb --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %"
+alias gbreset="gf -p && gb --merged | grep -vE '^\\*|master$|develop$|release$' | xargs -I % git branch -d %"
 alias git=hub
 alias gs='hub browse'
 alias gph='git push heroku master'
 function gco () {
     git checkout "$@"
     if [ "master" = "$1" ]; then gbreset; fi
+    if [ "release" = "$1" ]; then gbreset; fi
 }
 alias master='gco master && gl && gbreset'
 
@@ -166,9 +146,8 @@ export PATH="$HOME/.yarn/bin:$PATH"
 # homebrew openssl
 export PATH=/usr/local/opt/openssl/bin:$PATH
 
-# pepabo
-if [ -f ~/.zshrc-pepabo ]; then
-    source ~/.zshrc-pepabo
+if [ -f ~/.zshrc-work ]; then
+    source ~/.zshrc-work
 fi
 
 # added by travis gem
@@ -179,3 +158,7 @@ function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args ".
 
 # anyenv
 eval "$(anyenv init -)"
+
+export NVM_DIR="/Users/kimura.hiromi/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

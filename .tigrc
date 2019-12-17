@@ -12,3 +12,6 @@ set blob-view   = line-number:yes,interval=1 text
 set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
 
 set status-show-untracked-files = yes
+
+bind main    <Ctrl-R> !git rebase -i %(commit)
+bind diff    <Ctrl-R> !git rebase -i %(commit)

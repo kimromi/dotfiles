@@ -16,6 +16,7 @@ tabular
 taglist.vim
 typescript-vim
 unite.vim
+vim-coffee-script
 vim-colors-solarized
 vim-endwise
 vim-go

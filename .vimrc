@@ -93,6 +93,9 @@ NeoBundle 'digitaltoad/vim-pug'
 "for javascript
 NeoBundle 'pangloss/vim-javascript'
 
+"for coffeescript
+NeoBundle 'kchmck/vim-coffee-script'
+
 "非同期構文チェック
 NeoBundle 'w0rp/ale'
 let g:ale_sign_column_always = 1   "左端のバーを出しっぱなしにする
@@ -266,7 +269,3 @@ let g:go_def_mapping_enabled = 0
 "set statusline+=%*
 
 let g:vimfiler_ignore_pattern = '^\%(.git\|.DS_Store\)$'
-
-function Foo()
-  echo "foo"
-endfunction

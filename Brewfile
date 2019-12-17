@@ -13,5 +13,6 @@ brew "pt"
 
 brew "anyenv"
 brew "tfenv"
+brew "direnv"
 
 brew "kubectl"

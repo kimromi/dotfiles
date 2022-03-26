@@ -13,6 +13,7 @@ augroup filetypedetect
   au BufRead,BufNewFile *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
   au BufRead,BufNewFile *.ts setfiletype typescript
   au BufRead,BufNewFile *.ts setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  au BufRead,BufNewFile *.json setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 autocmd BufRead,BufNewFile *.slim setfiletype slim

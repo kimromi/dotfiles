@@ -1,13 +1,13 @@
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesfile = /Users/kimura.hiromi/.gitignore
   editor = vim
+  ignorecase = false
 [user]
   name = kimromi
   id = kimromi
   email = kimromi4@gmail.com
 [ghq]
   root = ~/repos
-  root = ~/.go/src
 [push]
   default = current
 [github]
@@ -20,3 +20,7 @@
   diff = auto
   status = auto
   branch = auto
+[init]
+  defaultBranch = main
+[pull]
+  ff = only

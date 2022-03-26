@@ -1,5 +1,5 @@
 # main view の左端にコミットIDを表示する
-set main-view = id date author:email-user commit-title:graph=yes,refs=yes
+set main-view = id commit-title:graph=yes,refs=yes
 
 # blame view の行数表示をON、intervalを1に
 set blame-view  = date:default author:email-user id:yes,color line-number:yes,interval=1 text
@@ -15,3 +15,5 @@ set status-show-untracked-files = yes
 
 bind main    <Ctrl-R> !git rebase -i %(commit)
 bind diff    <Ctrl-R> !git rebase -i %(commit)
+
+bind status  C  !git cz

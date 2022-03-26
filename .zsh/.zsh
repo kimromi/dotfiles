@@ -1,1 +1,1 @@
-/Users/hiromikimura/repos/github.com/kimromi/dotfiles/.zsh
+/Users/kimura.hiromi/repos/github.com/kimromi/dotfiles/.zsh

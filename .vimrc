@@ -13,41 +13,12 @@ set display=lastline             "文字数が長いファイルでも表示す�
 
 filetype plugin indent on
 syntax enable
-
-"dein.vim Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-set runtimepath+=$HOME/.vim/dein/repos/github.com/Shougo/dein.vim
-
-call dein#begin('$HOME/.vim/dein')
-
-call dein#add('Shougo/dein.vim')
-
-call dein#end()
-
-if dein#check_install()
-  call dein#install()
-endif
-"End dein.vim Scripts-------------------------
-
-"netrw -----
-nnoremap <C-f> :Ex<CR>
-let g:netrw_banner=0 "ヘッダを非表示
-let g:netrw_list_hide= '.git'
-function! NetrwMapping()
-  " hで一つ上のディレクトリへ
-  nmap <buffer> h -^
-  " lで一つ下のディレクトリへ
-  nmap <buffer> l <CR>
-endfunction
-augroup netrw_mapping
-  autocmd!
-  autocmd filetype netrw call NetrwMapping()
-augroup END
+colorscheme desert
 
 "タブ作成/閉じる/移動
 nnoremap <silent> <C-t> :tabnew<CR>:Ex<CR>
 nnoremap <silent> <C-w> :q<CR>
 nnoremap <silent> <C-h> :tabprevious<CR>
 nnoremap <silent> <C-l> :tabnext<CR>
+
+runtime! config/*.vim

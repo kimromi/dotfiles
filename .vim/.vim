@@ -1,0 +1,1 @@
+/Users/kimura.hiromi/repos/github.com/kimromi/dotfiles/.vim

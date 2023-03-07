@@ -3,7 +3,7 @@
   editor = vim
   ignorecase = false
 [user]
-  name = kimromi
+	name = Hiromi Kimura
   id = kimromi
   email = kimromi4@gmail.com
 [ghq]
@@ -24,3 +24,8 @@
   defaultBranch = main
 [pull]
   ff = only
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

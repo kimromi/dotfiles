@@ -51,8 +51,6 @@ alias k='kubectl'
 alias dc='docker-compose'
 alias be='bundle exec'
 alias bi='bundle install -j4 --path vendor/bundle'
-alias vi='/usr/local/bin/vim'
-alias vim='/usr/local/bin/vim'
 alias ip='curl httpbin.org/ip'
 function re () {
     repo=$(ghq list -p | peco)
@@ -80,7 +78,7 @@ alias gf='git fetch'
 alias gc='git commit'
 alias gbreset="gf -p && gb --merged | grep -vE '^\\*|main$|master$|develop$|release$' | xargs -I % git branch -d %"
 alias git=hub
-alias gs='hub browse'
+alias gs='gh browse --branch $(git rev-parse --abbrev-ref HEAD)'
 alias gph='git push heroku master'
 function gco () {
     git checkout "$@"
@@ -121,6 +119,18 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^r' peco-history-selection
 
+function peco-run-npm-script () {
+    local selected_script=$(cat package.json | jq -r '.scripts | keys[]' | peco --initial-filter=Fuzzy --query="$LBUFFER")
+    if [ -n "$selected_script" ]; then
+        BUFFER="npm run ${selected_script}"
+        CURSOR=$#BUFFER
+        zle reset-prompt
+        zle clear-screen
+    fi
+}
+zle -N peco-run-npm-script
+bindkey "^n" peco-run-npm-script
+
 ## golang settings
 #export GOPATH=$HOME/.go
 #export PATH=$HOME/.go/bin:$PATH
@@ -131,7 +141,9 @@ export EDITOR='vim'
 #export PATH="/usr/local/opt/libxml2/bin:$PATH"
 #export PATH="$HOME/.yarn/bin:$PATH"
 # homebrew openssl
-export PATH=/usr/local/opt/openssl/bin:$PATH
+export PATH=/opt/homebrew/opt/openssl@1.1/bin:$PATH
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/opt/homebrew/opt/openssl@1.1"
+
 
 if [ -f ~/.zshrc-work ]; then
     source ~/.zshrc-work
@@ -140,5 +152,5 @@ fi
 # vscode
 function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "." }
 
-# anyenv
-eval "$(anyenv init -)"
+# asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh

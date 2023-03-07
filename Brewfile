@@ -11,8 +11,7 @@ brew "tig"
 brew "jq"
 brew "pt"
 
-brew "anyenv"
-brew "tfenv"
+brew "asdf"
 brew "direnv"
 
 brew "kubectl"

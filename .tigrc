@@ -16,4 +16,4 @@ set status-show-untracked-files = yes
 bind main    <Ctrl-R> !git rebase -i %(commit)
 bind diff    <Ctrl-R> !git rebase -i %(commit)
 
-bind status  C  !git cz
+bind status  C  !git cz --disable-emoji

@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =0
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/Users/hiromi/repos/github.com/dotfiles'
 let g:netrw_dirhist_0='/Users/kimura.hiromi/repos/github.com/moneyforward/ex_web'
 let g:netrw_dirhist_9='/Users/kimura.hiromi/repos/github.com/kimromi/notes/.github/workflows'
 let g:netrw_dirhist_8='/Users/kimura.hiromi/repos/github.com/kimromi'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_5='/Users/kimura.hiromi/repos/github.com/moneyforward/ex_web
 let g:netrw_dirhist_4='/Users/kimura.hiromi/repos/github.com/moneyforward/ex_web/client'
 let g:netrw_dirhist_3='/Users/kimura.hiromi/repos/github.com/moneyforward/ex_web'
 let g:netrw_dirhist_2='/Users/kimura.hiromi/repos/github.com/moneyforward/ex_web/node_modules/@react-dnd/invariant/dist/cjs'
-let g:netrw_dirhist_1='/Users/kimura.hiromi/repos/github.com/kimromi/notes/.github/workflows'

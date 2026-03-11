@@ -149,8 +149,8 @@ if [ -f ~/.zshrc-work ]; then
     source ~/.zshrc-work
 fi
 
-# vscode
-function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "." }
+# cursor
+alias code="cursor ."
 
-# asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# mise 
+eval "$(/opt/homebrew/bin/mise activate zsh)"

@@ -11,7 +11,7 @@ brew "tig"
 brew "jq"
 brew "pt"
 
-brew "asdf"
+brew "mise"
 brew "direnv"
 
 brew "kubectl"
